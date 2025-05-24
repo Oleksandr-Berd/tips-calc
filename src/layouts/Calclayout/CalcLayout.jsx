@@ -8,6 +8,7 @@ const CalcLayout = () => {
 
     const [amount, setAmount] = useState(null)
     const [summary, setSummary] = useState(null)
+    const [formKey, setFormKey] = useState(0);
 
     const handleAmount = ({bill, tips, people}) => {
         setAmount({bill, tips, people})
@@ -31,15 +32,12 @@ useEffect(()=>{
 }, [amount])
 
 const handleReset = ()=> {
-    setAmount(null)
     setSummary(null)
+    setFormKey(prev => prev + 1)
 }
 
-console.log(amount);
-
-
     return ( <SC.CalcLayoutCustom>
-        <Calculator handleAmount={handleAmount}/>
+        <Calculator handleAmount={handleAmount} formKey={formKey}/>
         <Result summary={summary} handleReset = {handleReset}/>
     </SC.CalcLayoutCustom> );
 }
