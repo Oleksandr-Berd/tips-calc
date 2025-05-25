@@ -3,6 +3,8 @@ import * as SC from "./CalculatorStyled";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import FormObserver from "../../utils/FormObserver";
+import usdIcon from "../../assets/images/icon-dollar.svg"
+import peopleIcon from "../../assets/images/icon-person.svg"
 
 const validationSchema = Yup.object().shape({
   bill: Yup.number()
@@ -36,7 +38,8 @@ const Calculator = ({ handleAmount, formKey }) => {
               <SC.AmountFieldCon>
                 <label htmlFor="bill">Bill</label>
                 <SC.AmountField type="number" name="bill" />
-                <ErrorMessage name="bill" component="div" className="error" />
+                <img src={usdIcon} alt="usdIcon"/>
+                <SC.ErrorCustom name="bill" component="div" className="error" />
               </SC.AmountFieldCon>
               <div>
                 <h3>Select tips %</h3>
@@ -71,7 +74,8 @@ const Calculator = ({ handleAmount, formKey }) => {
               <SC.AmountFieldCon>
                 <label htmlFor="people">Number of People</label>
                 <SC.AmountField type="number" name="people" />
-                <ErrorMessage
+                <img src={peopleIcon} alt="peopleIcon"/>
+                <SC.ErrorCustom
                   name="people"
                   component="people"
                   className="error"

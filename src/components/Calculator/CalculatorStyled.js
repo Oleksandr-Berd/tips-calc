@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
-import { Field } from "formik";
+import { ErrorMessage, Field } from "formik";
 
 
 export const AmountFieldCon = styled.div`
 margin-bottom: 32px;
+position: relative;
+
 
 & > label{
     display: block;
@@ -15,10 +17,34 @@ margin-bottom: 32px;
 
     color: #5E7A7D;
 }
+
+ & img{
+    position: absolute;
+    top: 65%;
+    left: 0;
+
+    transform: translateX(20px) translateY(-50%);
+}
+`
+
+export const ErrorCustom = styled(ErrorMessage)`
+position: absolute;
+
+bottom: 0;
+left: 0;
+
+transform: translateY(100%);
+
+font-family: "space";
+font-style: italic;
+font-size: 12px;
+
+color: red;
 `
 
 export const AmountField = styled(Field)`
 width: 100%;
+
 
 padding-top: 16px;
 padding-bottom: 16px;
@@ -45,8 +71,6 @@ gap: 16px;
 
 margin-top: 16px;
 margin-bottom: 32px;
-
-
 `
 
 export const RadioFieldCon = styled.div`
