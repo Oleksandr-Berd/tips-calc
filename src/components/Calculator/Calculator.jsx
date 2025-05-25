@@ -1,6 +1,6 @@
 import * as SC from "./CalculatorStyled";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 import FormObserver from "../../utils/FormObserver";
 import usdIcon from "../../assets/images/icon-dollar.svg"
@@ -30,14 +30,14 @@ const Calculator = ({ handleAmount, formKey }) => {
           setSubmitting(false);
         }}
       >
-        {({ values }) => {
+        {({ values, errors, touched }) => {
          
           return (
-            <Form>
+            <SC.FormCustom>
               <FormObserver onChange={handleAmount} />
-              <SC.AmountFieldCon>
+              <SC.AmountFieldCon >
                 <label htmlFor="bill">Bill</label>
-                <SC.AmountField type="number" name="bill" />
+                <SC.AmountField type="number" name="bill" className={errors && touched ? "errorField" : ""}/>
                 <img src={usdIcon} alt="usdIcon"/>
                 <SC.ErrorCustom name="bill" component="div" className="error" />
               </SC.AmountFieldCon>
@@ -73,7 +73,7 @@ const Calculator = ({ handleAmount, formKey }) => {
               </div>
               <SC.AmountFieldCon>
                 <label htmlFor="people">Number of People</label>
-                <SC.AmountField type="number" name="people" />
+                <SC.AmountField type="number" name="people" className={errors && touched ? "errorField" : ""}/>
                 <img src={peopleIcon} alt="peopleIcon"/>
                 <SC.ErrorCustom
                   name="people"
@@ -81,7 +81,7 @@ const Calculator = ({ handleAmount, formKey }) => {
                   className="error"
                 />
               </SC.AmountFieldCon>
-            </Form>
+            </SC.FormCustom>
           );
         }}
       </Formik>

@@ -2,6 +2,7 @@ import * as SC from "./ResultStyled";
 
 const Result = ({summary, handleReset}) => {
 
+console.log(summary);
 
 
   return (
@@ -20,7 +21,7 @@ const Result = ({summary, handleReset}) => {
         </div>
         <SC.Amount>{summary ?  "$"+summary.totalTips : "$0.00"}</SC.Amount>
       </SC.SummaryCon>
-      <SC.Reset onClick={handleReset}>Reset</SC.Reset>
+      <SC.Reset onClick={handleReset} disabled={summary ? false : true}>Reset</SC.Reset>
     </SC.ResultCon>
   );
 };
